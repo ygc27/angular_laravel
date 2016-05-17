@@ -1,0 +1,7 @@
+#form .ng-invalid{
+     border: solid 1px #FA787E;
+}
+#form .ng-valid {
+     background-color: #78FA89;
+     color: #000;
+}

@@ -1,0 +1,40 @@
+<h2>Cadastrar Uuário</h2>
+
+<div>
+    <div ng-if="mensagem">
+        <div class="ui success message">
+          <p>{{ mensagem }}</p>
+        </div>
+    </div>
+    <br />
+    <div class="ui form">
+        <form novalidate name="form" id="form">
+          <div class="four fields">
+            <div class="required field">
+              <label>Nome</label>
+              <input type="text" name="name" placeholder="Nome" ng-model="user.name" required>
+               <div ng-show="hasError('name', 'required')">Digite seu nome</div>
+            </div>
+
+            <div class="required field">
+              <label>Sobrenome</label>
+              <input type="text" name="sobrenome" placeholder="Sobrenome" ng-model="user.sobrenome" required>
+              <div ng-show="hasError('sobrenome', 'required')">Digite seu sobrenome</div>
+            </div>
+
+            <div class="required field">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="E-mail" ng-model="user.email" required>
+              <div ng-show="hasError('email', 'required')">Digite seu e-mail</div>
+            </div>
+
+            <div class="required field">
+              <label>Password</label>
+              <input type="text" name="password" placeholder="Password" ng-model="user.password" required>
+              <div ng-show="hasError('password', 'required')">Digite sua senha</div>
+            </div>
+          </div>
+              <button type="submit" class="ui green button" ng-click="cadastrar(user)" ng-disabled="form.$invalid"> Cadastrar User</button>
+        </form>
+    </div>
+</div>

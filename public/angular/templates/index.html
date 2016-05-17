@@ -1,0 +1,53 @@
+<div ng-controller="UsersController">
+
+    <h2>Lista de Usuários</h2>
+
+    <!-- condicao mensagem -->
+    <div ng-if="mensagem" style="margin-bottom: 10px;">
+        <div class="ui success message">
+            <p>{{ mensagem }}</p>
+        </div>
+    </div>
+
+    <!-- busca de users -->
+    <div class="ui search">
+        <div class="ui icon input">
+            <input type="text" class="prompt" placeholder="Buscar um user" ng-model="buscaUser">
+        </div>
+    </div>
+
+    <!-- quando clicado em editar na listagem dos users -->
+    <div class="ui form" id="form" name="form" ng-show="edit_user" style="margin-top: 10px;">
+        <div class="inline field">
+            <input type="text" ng-model="user.name" required>
+            <input type="text" ng-model="user.sobrenome" required>
+            <input type="text" ng-model="user.email" class="six wide field" required>
+            <button class="ui green button" ng-click="update(user)">Atualizar</button>
+            <button class="ui red button" ng-click="cancel()">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- tabela com listagem dos users -->
+    <table class="ui celled table" width="100%">
+        <thead>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>E-mail</th>
+            <th>Editar</th>
+            <th>Deletar</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in users|filter:buscaUser:strict">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.sobrenome }}</td>
+                <td>{{ user.email }}</td>
+                <td><button class="ui green button" ng-click="edit(user)">Editar</button></td>
+                <td><button class="ui red button" ng-click="delete(user)">Deletar</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
